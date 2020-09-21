@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODOL</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .hgt50 {
+            height: 50px;
+        }
+
+        .footer {
+            text-align: center;
+            background: #3c3c3c;
+            color: white;
+        }
+    </style>
+    <script>
+        getData();
+
+        function getData() {
+            var request = new XMLHttpRequest()
+            request.open('GET', 'https://api.covid19api.com/summary', true)
+            request.onload = function () {
+                // Begin accessing JSON data here
+                var data = JSON.parse(this.response)
+
+                if (request.status >= 200 && request.status < 400) {
+                    document.getElementById("confim").innerHTML =  data.Global.TotalConfirmed;
+                    document.getElementById("active").innerHTML = data.Global.TotalDeaths;
+                    document.getElementById("death").innerHTML = data.Global.TotalConfirmed - data.Global.TotalDeaths - data.Global.TotalRecovered;
+                } else {
+                    console.log('error');
+                }
+            }
+            request.send();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1><i class="fa fa-bell"></i>TODOL</h1>
+            <p><i>Helps you manage and track your tasks</i></p>
+        </div>
+        <div>
+            <marquee>
+                <b>Confirmed Cases: </b><span id="confim"></span> | <b>Active Cases: </b><span id="active"></span> | <b>Death Cases: </b><span id="death"></span>
+            </marquee>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card col-sm-4" style="width:250px">
+                    <img class="card-img-top" src="diamond.jpg" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fa fa-diamond"></i> <a href="diamond.html">Diamond</a></h4>
+                        <p class="hgt50 card-text">You have all access to TODOL.</p>
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDiaModal">More
+                            Details</button>
+                    </div>
+                </div>
+                <div class="card col-sm-4" style="width:250px">
+                    <img class="card-img-top"
+                        src="https://png.pngtree.com/png-clipart/20190611/original/pngtree-spilled-gold-coins-png-image_2969816.jpg"
+                        alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fa fa-money"></i> <a href="gold.html">Gold</a></h4>
+                        <p class="hgt50 card-text">You have all access except mobile app access.</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#myGoldModal">More Details</button>
+                    </div>
+                </div>
+                <div class="card col-sm-4" style="width:250px">
+                    <img class="card-img-top"
+                        src="https://png.pngtree.com/png-clipart/20190515/original/pngtree-silver-golden-lotus-floral-metal-shine-vector-png-image_3575075.jpg"
+                        alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fa fa-leaf"></i> <a href="silver.html">Silver</a></h4>
+                        <p class="hgt50 card-text">You get to use application for 30 days.</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mySlvModal">More
+                            Details</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Diamond Modal -->
+            <div id="myDiaModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Diamond</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>User must have to pay $10 / month. <a href="contactus.html">Contact Us</a> for more info.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Gold Modal -->
+            <div id="myGoldModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>User must have to pay $5 / month.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Silver Modal -->
+            <div id="mySlvModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Silver</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Absolutely Free. User must have to pay $0 / month.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            Copy Right Protected
+        </div>
+    </div>
+</body>
+
+</html>

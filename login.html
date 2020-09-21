@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  .bottomSpace {
+      margin-bottom: 10px;
+  }
+  .bottonSpaceLarge {
+      margin-bottom: 60px;
+  }
+  </style>
+  <script>
+      function onLogin() {
+          var userName = document.getElementById("usr").value;
+          var passwrd = document.getElementById("pwd").value;
+
+          if (userName === 'admin' && passwrd === 'pwd') {
+            window.location = "/index.html";
+          } else {
+            alert("failed");
+          }
+      }
+      function onReset() {
+          document.getElementById("usr").value = '';
+          document.getElementById("pwd").value = '';
+      }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="bottonSpaceLarge">Welcome to TODOL</h1>
+  <div class="row bottomSpace">
+    <div class="col-sm-4">User name</div>
+    <div class="col-sm-4"><input type="text" class="form-control" id="usr"></div>
+  </div>
+  <div class="row bottomSpace">
+    <div class="col-sm-4">Password</div>
+    <div class="col-sm-4"><input type="password" class="form-control" id="pwd"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <!-- <a href="index.html" >Login</a> -->
+        <button type="button" onclick="onLogin()" class="btn btn-primary">Login</button>
+        <button type="button" onclick="onReset()" class="btn btn-default">Reset</button></div>
+  </div>
+</div>
+
+</body>
+</html>
